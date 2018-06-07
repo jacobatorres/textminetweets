@@ -30,7 +30,7 @@ remove_extra_words_pair_words <- function(tweets, unspoken_words){
 
 vizualize_top_2_grams <- function(query, tweets) {
   title_date = paste("Top 20 Two-worded Phrases in '", query, "' Tweets", sep = '')
-  png(filename = paste("~/Data-driven Projects/graphs/",title_date, ".png", sep = ''))
+  png(filename = paste(current_filepath , "/graphs/",title_date, ".png", sep = ''))
   
   print(tweets %>%
     count(word1, word2, sort = TRUE) %>%

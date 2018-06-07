@@ -18,7 +18,9 @@ library(widyr)
 
 
 ####remember to set-up details so we can use Twitter API
-setwd("~/Data-driven Projects")
+current_filepath <<- getwd()
+setwd(current_filepath)
+dir.create("graphs")
 
 source("TextMineTweets_Ch1.R")
 source("TextMineTweets_Ch1_Ngram_2.R")

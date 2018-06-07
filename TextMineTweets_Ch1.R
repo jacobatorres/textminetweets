@@ -11,6 +11,7 @@ search_twitter_with <- function(query){
   return(tweets)
 }
 
+
 #remove URLs, and convert newlines to spaces
 remove_extra_words <- function(tweets) {
   
@@ -34,12 +35,12 @@ tokenize_and_polish <- function(tweets, unspoken_words) {
 #asks for filter words so we can remove them from results
 get_filter_words <- function(){
   filter_words = c()
-  query = ''
+  query = ""
   while(query != "TIGIL"){
     filter_words = c(filter_words, query)
     query = readline("Word to be filtered out <'TIGIL' to stop>:")
   }
-  return(filter_words)
+  return(filter_words[2:length(filter_words)])
 }
 
 #check the top words
@@ -49,7 +50,7 @@ get_filter_words <- function(){
 
 vizualize_top_20_words <- function(query, tweets){
   title_date = paste("Top 20 Words in '", query, "' Tweets", sep = '')
-  png(filename = paste("~/Data-driven Projects/graphs/",title_date, ".png", sep = ''))
+  png(filename = paste(current_filepath , "/graphs/",title_date, ".png", sep = ''))
   print(tweets %>% 
           filter(!grepl("[^\x01-\x7F]+", word)) %>%
           count(word, sort = TRUE) %>%

@@ -37,7 +37,7 @@ vizualize_correlated_words <- function(bigrams_sep, top_10){
   corr_12 = bind_rows(corr_1, corr_2)
   
   title_date = paste("Top Bigrams Associated with (", top_3_words, ")", sep = "")
-  png(filename = paste("~/Data-driven Projects/graphs/",title_date, ".png", sep = ''))
+  png(filename = paste(current_filepath , "/graphs/",title_date, ".png", sep = ''))
   
   vizualize_top_bigrams(corr_12, title_date)
   dev.off()
@@ -73,7 +73,7 @@ vizualize_pairwise_correlation <- function(query, tweets){
     pairwise_cor(word, line, sort=TRUE)
   
   title_date = paste("Top Correlated Phrases in '", query, "' Tweets", sep = '')
-  png(filename = paste("~/Data-driven Projects/graphs/",title_date, ".png", sep = ''))
+  png(filename = paste(current_filepath , "/graphs/",title_date, ".png", sep = ''))
   
   print(
     word_cors %>%

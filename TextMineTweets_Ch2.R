@@ -25,7 +25,7 @@ get_words_sentiment <- function(tweets, senti) {
 #know how much positive words and negative words in each tweet
 vizualize_cumsum_pos_neg_words <- function (query, pos_neg_df){
   title = paste("Running Total of Negative and Positive Words in '", query, "' Tweets", sep = '')
-  png(filename = paste("~/Data-driven Projects/graphs/",title, ".png", sep = ''))
+  png(filename = paste(current_filepath , "/graphs/",title, ".png", sep = ''))
   
   print(ggplot(pos_neg_df, aes(x = line, y = running_total, color = sentiment)) +
           geom_col(show.legend = FALSE) + 
@@ -48,7 +48,7 @@ get_top_10 <- function(tweets, senti){
 # get the top positive and negative words, displayed side by side
 vizualize_top_pos_neg_words <- function(query, top_10_pos, top_10_neg){
   title_date = paste("Top 10 Positive & Negative Words in '", query, "' Tweets", sep = '')
-  png(filename = paste("~/Data-driven Projects/graphs/",title_date, ".png", sep = ''))
+  png(filename = paste(current_filepath , "/graphs/",title_date, ".png", sep = ''))
   
   print(bind_rows(top_10_neg, top_10_pos)  %>% 
           mutate(word = reorder(word, n)) %>%
@@ -67,7 +67,7 @@ vizualize_top_pos_neg_words <- function(query, top_10_pos, top_10_neg){
 vizualize_wordcloud_pos_neg <- function(query, tweets) {
   title_date = paste("Wordcloud of Negative and Positive Words in '", query, "' Tweets", sep = '')
   
-  png(filename = paste("~/Data-driven Projects/graphs/",title_date, ".png", sep = ''))
+  png(filename = paste(current_filepath , "/graphs/",title_date, ".png", sep = ''))
   print(tweets %>%
           inner_join(get_sentiments("bing")) %>%
           count(word, sentiment, sort = TRUE) %>%
